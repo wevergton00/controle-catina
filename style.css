@@ -1,42 +1,46 @@
-/* Configurações globais */
+/* --- Configurações Globais (GitHub Style) --- */
 body {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-    background-color: #0d1117; /* Fundo escuro estilo GitHub */
-    color: #c9d1d9; /* Texto claro */
+    background-color: #0d1117; /* Fundo escuro do GitHub */
+    color: #c9d1d9; /* Cor do texto principal */
     margin: 0;
     padding: 40px;
-    display: flex;
+    display: flex; /* Centraliza o card na tela */
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
     min-height: 100vh;
 }
 
-/* O container principal da cantina */
+/* --- O Card Principal --- */
 .container {
     background-color: #161b22; /* Fundo do "card" */
-    border: 1px solid #30363d;
-    border-radius: 8px;
+    border: 1px solid #30363d; /* Borda do "card" */
+    border-radius: 8px; /* Cantos arredondados */
     padding: 24px;
     width: 100%;
-    max-width: 400px;
+    max-width: 450px; /* Largura máxima do card */
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
     text-align: center;
 }
 
+/* --- Títulos --- */
 h1 {
     color: #58a6ff; /* Azul GitHub */
     border-bottom: 2px solid #30363d;
     padding-bottom: 10px;
+    margin-top: 0;
 }
 
 h2 {
     color: #c9d1d9;
+    font-size: 1.2em;
     margin-top: 0;
+    margin-bottom: 10px;
 }
 
-/* Os cartões de informação (estoque e total) */
+/* --- Cards de Informação (Dentro do card principal) --- */
 .info-card {
-    background-color: #0d1117; /* Fundo mais escuro */
+    background-color: #0d1117; /* Fundo mais escuro para contraste */
     border-radius: 6px;
     padding: 16px;
     margin: 16px 0;
@@ -47,38 +51,45 @@ h2 {
     margin: 8px 0;
 }
 
+/* Números em destaque */
 .info-card strong {
     color: #ffffff; /* Destaque branco */
     font-size: 1.2em;
 }
 
-/* Estilo do botão */
+/* --- Botão Principal --- */
 button {
     background-color: #238636; /* Verde GitHub */
     color: white;
     font-size: 16px;
     font-weight: bold;
-    border: none;
+    border: 1px solid #2ea043;
     border-radius: 6px;
     padding: 12px 24px;
     cursor: pointer;
     width: 100%;
-    transition: background-color 0.2s ease;
+    transition: background-color 0.2s ease; /* Efeito suave */
 }
 
 button:hover {
-    background-color: #2ea043; /* Verde mais claro */
+    background-color: #2ea043; /* Verde mais claro ao passar o mouse */
 }
 
-/* Estilo para o botão quando esgotado */
+/* Estilo para o botão quando estiver desabilitado */
 button:disabled {
-    background-color: #8b949e; /* Cinza */
-    cursor: not-allowed;
+    background-color: #21262d; /* Cinza escuro */
+    border-color: #30363d;
+    color: #8b949e;
+    cursor: not-allowed; /* Mostra o cursor de "não permitido" */
 }
 
-/* Destaque para o total */
+/* --- Estilo do Total Arrecadado --- */
+.total {
+    border: 1px solid #3fb950; /* Borda verde no total */
+}
+
 #display-total {
-    font-size: 2em;
+    font-size: 2.2em;
     font-weight: bold;
-    color: #3fb950; /* Verde claro */
+    color: #3fb950; /* Cor verde no total */
 }
