@@ -3,7 +3,7 @@
 */
 document.addEventListener('DOMContentLoaded', function() {
 
-    // --- Passo 1: Declarando variáveis ---
+    // --- Passo 1: Declarando variáveis (DO SEU EXERCÍCIO) ---
     
     // var: Escopo global (na web, 'window')
     var nomeCantina = "Cantina da Escola";
@@ -17,6 +17,8 @@ document.addEventListener('DOMContentLoaded', function() {
     // let: Total de vendas (começa em 0 e vai mudar)
     let totalVendido = 0;
 
+    // --- Fim do Passo 1 ---
+
     // --- Conectando o JS com o HTML ---
     // Pegar os elementos da página para poder atualizá-los
     const displayNome = document.getElementById('nome-cantina');
@@ -26,11 +28,20 @@ document.addEventListener('DOMContentLoaded', function() {
     const btnVender = document.getElementById('btn-vender');
 
     // --- Inicializando a Página ---
-    // Coloca os valores iniciais na tela
-    displayNome.textContent = nomeCantina;
-    displayEstoque.textContent = salgados;
-    // .toFixed(2) formata o número para R$ 5.00
-    displayPreco.textContent = `R$ ${precoSalgado.toFixed(2)}`;
+    // Coloca os valores iniciais na tela assim que a página carrega
+    function atualizarTela() {
+        displayNome.textContent = nomeCantina;
+        displayEstoque.textContent = salgados;
+        // .toFixed(2) formata o número para R$ 5.00
+        displayPreco.textContent = `R$ ${precoSalgado.toFixed(2)}`;
+        displayTotal.textContent = totalVendido.toFixed(2);
+
+        // Verifica o estoque para desabilitar o botão
+        if (salgados === 0) {
+            btnVender.textContent = 'ESTOQUE ESGOTADO';
+            btnVender.disabled = true; // Desabilita o botão
+        }
+    }
 
     // --- Adicionando Interatividade (O "Clique") ---
     btnVender.addEventListener('click', function() {
@@ -39,32 +50,27 @@ document.addEventListener('DOMContentLoaded', function() {
         // Só vende se tiver estoque
         if (salgados > 0) {
             
-            // --- Passo 2: Atualizando valores ---
+            // --- Passo 2: Atualizando valores (DO SEU EXERCÍCIO) ---
             salgados = salgados - 1; // Atualiza o estoque (let)
             totalVendido = totalVendido + precoSalgado; // Atualiza o total (let)
             
             // Atualiza os números na tela
-            displayEstoque.textContent = salgados;
-            displayTotal.textContent = totalVendido.toFixed(2);
-            
-            // Se acabaram os salgados
-            if (salgados === 0) {
-                btnVender.textContent = 'ESTOQUE ESGOTADO';
-                btnVender.disabled = true; // Desabilita o botão
-            }
+            atualizarTela();
 
         } 
-        // Se não tiver estoque, não faz nada (o botão já estará desabilitado)
     });
 
-    // --- Passo 3: Teste Rápido (em forma de comentário) ---
+    // Roda a função pela primeira vez para preencher a tela
+    atualizarTela();
+
+    /*
+    --- Passo 3: Teste Rápido (DO SEU EXERCÍCIO) ---
     
     // 1. O que acontece se tentar mudar 'precoSalgado'?
     // precoSalgado = 6; 
-    // Se você descomentar a linha acima, o console do navegador mostrará:
+    // Se você descomentar a linha acima, o console do navegador (F12) mostrará:
     // "TypeError: Assignment to constant variable."
     // (Erro: Tentativa de atribuição a uma variável constante)
-    // Isso prova que 'const' não pode ser alterado!
     
     // 2. O que acontece com 'var' e 'let' em um bloco?
     if (true) {
@@ -74,6 +80,6 @@ document.addEventListener('DOMContentLoaded', function() {
     
     console.log(testeVar); // Funciona! 'var' vaza o escopo do 'if'.
     // console.log(testeLet); // ERRO! 'let' não é definido aqui fora.
-    // Isso prova que 'let' respeita o escopo de bloco {}
-
+    
+    */
 });
