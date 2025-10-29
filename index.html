@@ -2,38 +2,32 @@
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale-1.0">
-    <title>Cantina da Escola</title>
-    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cantina Virtual</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
+    <header>
+        <h1>Cantina da Escola</h1>
+    </header>
+
     <main class="container">
-        
-        <h1 id="nome-cantina"></h1>
+        <section id="menu">
+            <h2>Cardápio</h2>
+            <div id="menu-items" class="items-container">
+                </div>
+        </section>
 
-        <div class="info-card">
-            <h2>Estoque e Preço</h2>
-            <p>
-                Salgados disponíveis: 
-                <strong id="display-estoque">--</strong>
-            </p>
-            <p>
-                Preço por unidade: 
-                <strong id="display-preco">R$ --,--</strong>
-            </p>
-        </div>
-
-        <button id="btn-vender">Vender 1 Salgado</button>
-
-        <div class="info-card total">
-            <h2>Total Arrecadado</h2>
-            <p>
-                R$ <span id="display-total">0.00</span>
-            </p>
-        </div>
-        
+        <aside id="cart">
+            <h2>Carrinho</h2>
+            <ul id="cart-items">
+                </ul>
+            <div id="cart-total">
+                <strong>Total: R$ <span id="total-price">0.00</span></strong>
+            </div>
+            <button id="checkout-button">Finalizar Pedido</button>
+        </aside>
     </main>
 
     <script src="script.js"></script>
