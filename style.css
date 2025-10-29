@@ -1,1 +1,14 @@
 
+body {
+  background-color: #f4f4f4; /* Fundo cinza claro */
+}
+
+h1 {
+  color: navy; /* Cor azul marinho */
+  font-family: Arial, sans-serif;
+}
+
+p {
+  color: #333333; /* Cor cinza escuro */
+  font-size: 16px;
+}
