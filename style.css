@@ -1,95 +1,120 @@
-/* --- Configurações Globais (GitHub Style) --- */
-body {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-    background-color: #0d1117; /* Fundo escuro do GitHub */
-    color: #c9d1d9; /* Cor do texto principal */
+/* Reset básico e fontes */
+* {
+    box-sizing: border-box;
     margin: 0;
-    padding: 40px;
-    display: flex; /* Centraliza o card na tela */
-    justify-content: center;
-    align-items: flex-start;
-    min-height: 100vh;
+    padding: 0;
 }
 
-/* --- O Card Principal --- */
-.container {
-    background-color: #161b22; /* Fundo do "card" */
-    border: 1px solid #30363d; /* Borda do "card" */
-    border-radius: 8px; /* Cantos arredondados */
-    padding: 24px;
-    width: 100%;
-    max-width: 450px; /* Largura máxima do card */
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+    line-height: 1.6;
+}
+
+header {
+    background: #333;
+    color: #fff;
+    padding: 1rem;
     text-align: center;
 }
 
-/* --- Títulos --- */
-h1 {
-    color: #58a6ff; /* Azul GitHub */
-    border-bottom: 2px solid #30363d;
-    padding-bottom: 10px;
-    margin-top: 0;
+/* Layout principal com Flexbox */
+.container {
+    display: flex;
+    flex-wrap: wrap; /* Permite que o carrinho vá para baixo em telas pequenas */
+    margin: 20px;
+    gap: 20px; /* Espaço entre o menu e o carrinho */
+}
+
+#menu {
+    flex: 3; /* O menu ocupará 3/4 do espaço */
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+#cart {
+    flex: 1; /* O carrinho ocupará 1/4 do espaço */
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    align-self: flex-start; /* Mantém o carrinho no topo */
 }
 
 h2 {
-    color: #c9d1d9;
-    font-size: 1.2em;
-    margin-top: 0;
+    border-bottom: 2px solid #f4f4f4;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+
+/* Estilo dos itens do cardápio */
+.menu-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid #ddd;
+    padding: 10px;
     margin-bottom: 10px;
+    border-radius: 5px;
 }
 
-/* --- Cards de Informação (Dentro do card principal) --- */
-.info-card {
-    background-color: #0d1117; /* Fundo mais escuro para contraste */
-    border-radius: 6px;
-    padding: 16px;
-    margin: 16px 0;
+.menu-item-info {
+    flex-grow: 1;
 }
 
-.info-card p {
-    font-size: 1.1em;
-    margin: 8px 0;
+.menu-item-info h3 {
+    margin-bottom: 5px;
 }
 
-/* Números em destaque */
-.info-card strong {
-    color: #ffffff; /* Destaque branco */
-    font-size: 1.2em;
-}
-
-/* --- Botão Principal --- */
-button {
-    background-color: #238636; /* Verde GitHub */
-    color: white;
-    font-size: 16px;
+.menu-item-info .price {
+    color: #008000; /* Verde para o preço */
     font-weight: bold;
-    border: 1px solid #2ea043;
-    border-radius: 6px;
-    padding: 12px 24px;
+}
+
+.add-to-cart-btn {
+    background: #28a745;
+    color: #fff;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 5px;
     cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.add-to-cart-btn:hover {
+    background: #218838;
+}
+
+/* Estilo dos itens do carrinho */
+#cart-items li {
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    padding: 5px 0;
+    border-bottom: 1px dashed #ccc;
+}
+
+#cart-total {
+    margin-top: 20px;
+    font-size: 1.2rem;
+    text-align: right;
+}
+
+#checkout-button {
     width: 100%;
-    transition: background-color 0.2s ease; /* Efeito suave */
+    padding: 10px;
+    margin-top: 15px;
+    background: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
 }
 
-button:hover {
-    background-color: #2ea043; /* Verde mais claro ao passar o mouse */
-}
-
-/* Estilo para o botão quando estiver desabilitado */
-button:disabled {
-    background-color: #21262d; /* Cinza escuro */
-    border-color: #30363d;
-    color: #8b949e;
-    cursor: not-allowed; /* Mostra o cursor de "não permitido" */
-}
-
-/* --- Estilo do Total Arrecadado --- */
-.total {
-    border: 1px solid #3fb950; /* Borda verde no total */
-}
-
-#display-total {
-    font-size: 2.2em;
-    font-weight: bold;
-    color: #3fb950; /* Cor verde no total */
+#checkout-button:hover {
+    background: #0056b3;
 }
