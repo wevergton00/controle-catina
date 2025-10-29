@@ -1,1 +1,49 @@
 
+lá minha gente!
+
+Vamos praticar um pouco que falamos em sala de aula onde você vai criar um pequeno programa em para treinar var, let e const.
+
+Passo 1 – Declarando variáveis
+
+Use para declarar o nome da cantina.
+var nomeCantina = "Cantina da Escola";
+console.log("Bem-vindo à " + nomeCantina);
+Use para declarar a quantidade de salgados disponíveis (esse valor pode mudar).
+let salgados = 20;
+console.log("Temos " + salgados + " salgados disponíveis.");
+Use para declarar o preço fixo de cada salgado.
+const precoSalgado = 5;
+console.log("Cada salgado custa R$" + precoSalgado);
+Passo 2 – Atualizando valores
+
+Agora, imagine que .
+
+
+Atualize o número de salgados.Calcule quanto a cantina ganhou.
+salgados = salgados - 5;let totalVendido = 5 * precoSalgado;
+
+console.log("Agora restam " + salgados + " salgados.");
+console.log("A cantina vendeu R$" + totalVendido);
+
+
+Passo 3 – Teste rápido
+
+O que acontece se tentar mudar o valor de precoSalgado?
+
+precoSalgado = 6; // Teste e veja o erro
+
+O que acontece se criar outra variável com var dentro de um bloco {}?
+
+
+if (true) {
+var testeVar = "Sou var";
+let testeLet = "Sou let";
+console.log(testeVar); // funciona
+console.log(testeLet); // funciona
+}
+console.log(testeVar); // funciona
+console.log(testeLet); // ERRO
+Objetivo do exercício
+Entender que é global e pode causar problemas.
+pode mudar e respeita o escopo do bloco.
+é constante e não pode ser alterado.
