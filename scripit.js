@@ -1,100 +1,34 @@
-// Espera o HTML carregar completamente antes de executar o script
-document.addEventListener('DOMContentLoaded', () => {
+// (Você deve adicionar isso ao final do seu arquivo JS, 
+//  depois do código que calcula o total)
 
-    // --- 1. NOSSOS DADOS (O CARDÁPIO) ---
-    const menuItems = [
-        { id: 1, name: 'Pão de Queijo', price: 3.50 },
-        { id: 2, name: 'Suco de Laranja (Copo)', price: 5.00 },
-        { id: 3, name: 'Misto Quente', price: 6.00 },
-        { id: 4, name: 'Bolo de Chocolate (Fatia)', price: 4.50 },
-        { id: 5, name: 'Refrigerante (Lata)', price: 4.00 }
-    ];
+// Seleciona o botão de finalizar
+const botaoFinalizar = document.getElementById('finalizar-pedido');
 
-    // --- 2. NOSSO CARRINHO (COMEÇA VAZIO) ---
-    let cart = [];
-
-    // --- 3. SELECIONANDO ELEMENTOS DO HTML ---
-    const menuItemsContainer = document.getElementById('menu-items');
-    const cartItemsContainer = document.getElementById('cart-items');
-    const totalPriceElement = document.getElementById('total-price');
-    const checkoutButton = document.getElementById('checkout-button');
-
-    // --- 4. FUNÇÃO PARA MOSTRAR OS ITENS DO CARDÁPIO NA TELA ---
-    function renderMenu() {
-        menuItems.forEach(item => {
-            const menuItemElement = document.createElement('div');
-            menuItemElement.classList.add('menu-item');
-            
-            menuItemElement.innerHTML = `
-                <div class="menu-item-info">
-                    <h3>${item.name}</h3>
-                    <span class="price">R$ ${item.price.toFixed(2)}</span>
-                </div>
-                <button class="add-to-cart-btn" data-id="${item.id}">Adicionar</button>
-            `;
-            
-            // Adiciona o "ouvinte" de clique para o botão "Adicionar"
-            menuItemElement.querySelector('.add-to-cart-btn').addEventListener('click', () => {
-                addToCart(item.id);
-            });
-
-            menuItemsContainer.appendChild(menuItemElement);
-        });
-    }
-
-    // --- 5. FUNÇÃO PARA ADICIONAR UM ITEM AO CARRINHO ---
-    function addToCart(itemId) {
-        // Encontra o item no cardápio pelo ID
-        const item = menuItems.find(i => i.id === itemId);
-        
-        if (item) {
-            cart.push(item); // Adiciona o item ao array do carrinho
-            renderCart(); // Atualiza a exibição do carrinho
-        }
-    }
-
-    // --- 6. FUNÇÃO PARA MOSTRAR OS ITENS DO CARRINHO NA TELA ---
-    function renderCart() {
-        // Limpa o carrinho antes de adicionar os itens
-        cartItemsContainer.innerHTML = '';
-        
-        let total = 0;
-
-        cart.forEach(item => {
-            const cartItemElement = document.createElement('li');
-            cartItemElement.textContent = `${item.name} - R$ ${item.price.toFixed(2)}`;
-            cartItemsContainer.appendChild(cartItemElement);
-            
-            // Soma o preço do item ao total
-            total += item.price;
-        });
-
-        // Atualiza o texto do preço total
-        totalPriceElement.textContent = total.toFixed(2);
-    }
+// Adiciona um "ouvinte" de clique
+botaoFinalizar.addEventListener('click', function() {
     
-    // --- 7. FUNÇÃO PARA O BOTÃO "FINALIZAR PEDIDO" ---
-    checkoutButton.addEventListener('click', () => {
-        if (cart.length === 0) {
-            alert('Seu carrinho está vazio!');
-            return;
-        }
+    // Tenta encontrar o elemento que mostra o total
+    // (Assumindo que o total está dentro do '<strong>' no carrinho)
+    const totalElement = document.querySelector("#carrinho strong");
+    let totalValor = "0.00"; // Valor padrão
+
+    if (totalElement) {
+        // Pega o texto (Ex: "Total: R$ 5.00") e extrai apenas o número
+        totalValor = totalElement.innerText.replace("Total: R$ ", "");
+    }
+
+    // Verifica se o carrinho não está vazio
+    if (parseFloat(totalValor) > 0) {
+        // Mostra uma mensagem de sucesso
+        alert("Pedido finalizado com sucesso!\nTotal: R$ " + totalValor);
         
-        // Cria uma mensagem com o resumo do pedido
-        let orderSummary = 'Pedido Finalizado:\n';
-        cart.forEach(item => {
-            orderSummary += `- ${item.name} (R$ ${item.price.toFixed(2)})\n`;
-        });
-        orderSummary += `\nTotal: R$ ${totalPriceElement.textContent}`;
+        // --- Opcional: Limpar o carrinho ---
+        // Aqui você chamaria sua função de limpar o carrinho e redefinir o total para 0
+        // Ex: limparCarrinho(); 
+        // Ex: atualizarTotal(0); 
 
-        alert(orderSummary);
-        
-        // Limpa o carrinho após finalizar
-        cart = [];
-        renderCart();
-    });
-
-    // --- INICIALIZAÇÃO ---
-    renderMenu(); // Chama a função para mostrar o cardápio assim que a página carrega
-
+    } else {
+        // Mostra uma mensagem se o carrinho estiver vazio
+        alert("Seu carrinho está vazio!");
+    }
 });
